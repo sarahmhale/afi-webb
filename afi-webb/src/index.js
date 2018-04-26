@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Subscriber from './components/Subscriber'
 import Company from './components/Company'
+import Ads from './components/Ads'
+import {Header} from './components/Header'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,8 +21,10 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <BrowserRouter>
         <div>
+          <Header/>
           <Route exact path={"/"} component={Subscriber}/>
           <Route path={"/company"} component={Company}/>
+          <Route path={"/ads"} component={Ads}/>
         </div>
       </BrowserRouter>
     </ApolloProvider>, document.getElementById('root'));

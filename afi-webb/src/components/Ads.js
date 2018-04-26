@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-export default class SubscriberPage extends Component {
+
+export default class CompanyPage extends Component {
   render() {
     return (
       <div>
 
         <p>
-          Subscriber
-          
+          ADS
+
+
         </p>
       </div>
     );
