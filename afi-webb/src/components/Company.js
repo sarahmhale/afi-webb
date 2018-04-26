@@ -31,13 +31,14 @@ export default class Company extends React.Component {
           controlId="formBasicText"
           validationState={this.getValidationState()}
         >
-          <ControlLabel>Working example with validation</ControlLabel>
+          <ControlLabel>Company Name:</ControlLabel>
           <FormControl
             type="text"
             value={this.state.value}
-            placeholder="Enter text"
+            placeholder="Enter Company name"
             onChange={this.handleChange}
           />
+
           <FormControl.Feedback />
           <HelpBlock>Validation is based on string length.</HelpBlock>
         </FormGroup>
