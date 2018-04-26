@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-import Root from './components/Root';
-import Company from './components/Company'
-import Subscriber from './components/Subscriber'
-import { Router, Route,browserHistory } from "react-router"
-class App extends Component {
-  render() {
-    return (
-      <Router history={browserHistory}>
-        <Route path={"company"} component={Company}/>
-        <Route path={"subscriber"} component={Subscriber}/>
-      </Router>
-    );
-  }
+import { Link } from 'react-router-dom';
+
+export const Subscriber = () => {
+  return (
+      <div className="title">
+        <h1>React Router demo</h1>
+        <Link to="/company"><button>Show the company</button></Link>
+      </div>
+  )
 }
 
-export default App;
+export const Company = () => {
+  return (
+    <div className="nav">
+      <ul>
+        <li>list item</li>
+        <li>list item</li>
+      </ul>
+      <Link to="/"><button>Back Home</button></Link>
+    </div>
+  )
+}
