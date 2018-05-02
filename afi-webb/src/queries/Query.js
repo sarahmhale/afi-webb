@@ -13,3 +13,14 @@ export const CREATE_COMPANY = gql `
     }
   }
 `
+
+export const CREATE_BILLING = gql `
+  mutation  createCompany($input: CreateBillingInput!) {
+  createCompany(input: $input) {
+    bi_address
+    bi_postcode
+    bi_city
+    co_id
+    }
+  }
+`
