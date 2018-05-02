@@ -40,7 +40,7 @@ export const CREATE_ADS = gql `
 
 export const GET_ADS = gql `
   {
-    Ads {
+    getAds {
       ad_id
       ad_advertiserPrice
       ad_productPrice

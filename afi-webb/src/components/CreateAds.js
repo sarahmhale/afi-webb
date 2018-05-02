@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormControl, Button, ControlLabel, FormGroup } from 'react-bootstrap';
 import { Mutation } from "react-apollo";
-import { CREATE_ADS } from '../queries/Query'
+import { CREATE_ADS ,GET_ADS} from '../queries/Query'
 
 
 export default class CreateAds extends Component {
@@ -36,7 +36,17 @@ export default class CreateAds extends Component {
 
   render() {
     return (
-      <Mutation mutation={CREATE_ADS}>
+      <Mutation mutation={CREATE_ADS}
+        update={(cache, { data: { createAds } }) => {
+
+          const {getAds} = cache.readQuery({ query: GET_ADS });
+          console.log(createAds)
+          cache.writeQuery({
+            query: GET_ADS,
+            data: { getAds: getAds.concat([createAds]) }
+          });
+        }}>
+
         {(createAds, { data,error }) => {
 
           return(

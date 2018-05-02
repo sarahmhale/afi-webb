@@ -23,6 +23,7 @@ export default class Ads extends Component {
         query={GET_ADS}
       >
         {({ loading, error, data }) => {
+          console.log(data)
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
           return (
@@ -36,7 +37,7 @@ export default class Ads extends Component {
                 </tr>
               </thead>
               <tbody>
-                {data.Ads.map((data)=>this.tableCell(data))}
+                {data.getAds.map((data)=>this.tableCell(data))}
               </tbody>
             </Table>
           );
