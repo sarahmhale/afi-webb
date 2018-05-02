@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { FormControl, Button, ControlLabel, HelpBlock, FormGroup } from 'react-bootstrap';
+import { FormControl, Button, ControlLabel,FormGroup } from 'react-bootstrap';
 import { Mutation } from "react-apollo";
 import { CREATE_BILLING } from '../queries/Query'
 
-export default class Company extends React.Component {
+export default class Company extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -13,28 +13,28 @@ export default class Company extends React.Component {
 
 
     this.state = {
-      bi_address: this.props.id,
+      bi_address: '',
       bi_postcode: '',
       bi_city: '',
-      co_id: '',
+      co_id: this.props.id,
 
     };
   }
 
   handleChangeAddress(e) {
-    this.setState({ co_address: e.target.value });
+    this.setState({ bi_address: e.target.value });
   }
   handleChangePostcode(e) {
-    this.setState({ co_postcode: e.target.value });
+    this.setState({ bi_postcode: e.target.value });
   }
 
   handleChangeCity(e) {
-    this.setState({ co_city: e.target.value });
+    this.setState({ bi_city: e.target.value });
   }
 
   render() {
     return (
-      <Mutation mutation={CREATE_COMPANY}>
+      <Mutation mutation={CREATE_BILLING}>
         {(createCompany, { data,error }) => (
           <form
             onSubmit={e => {
@@ -47,6 +47,7 @@ export default class Company extends React.Component {
                 }
               });
             }}>
+            <h1>Billing</h1>
             <FormGroup
               controlId="formBasicText"
 
