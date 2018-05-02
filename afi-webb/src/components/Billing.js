@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { FormControl, Button, ControlLabel,FormGroup } from 'react-bootstrap';
+import { FormControl, Button, ControlLabel, FormGroup } from 'react-bootstrap';
 import { Mutation } from "react-apollo";
 import { CREATE_BILLING } from '../queries/Query'
+import Ads from './Ads'
 
-export default class Company extends Component {
+export default class Billing extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -35,51 +36,55 @@ export default class Company extends Component {
   render() {
     return (
       <Mutation mutation={CREATE_BILLING}>
-        {(createCompany, { data,error }) => (
-          <form
-            onSubmit={e => {
-              let input = this.state
-              console.log(input)
-              e.preventDefault();
-              createCompany({
-                variables: {
-                  input: this.state
-                }
-              });
-            }}>
-            <h1>Billing</h1>
-            <FormGroup
-              controlId="formBasicText"
+        {(createCompany, { data,error }) => {
+          if(!data){
+            return(
+              <form
+                onSubmit={e => {
+                  console.log(this.state)
+                  e.preventDefault();
+                  createCompany({
+                    variables: {
+                      input: this.state
+                    }
+                  });
+                }}>
+                <h1>Billing</h1>
+                <FormGroup
+                  controlId="formBasicText"
 
-            >
-              <ControlLabel>Adress:</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.co_address}
-                placeholder="Enter adress"
-                onChange={this.handleChangeAddress}
-              />
-              <br/>
-              <ControlLabel>Postcode:</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.co_postcode}
-                placeholder="Enter postcode"
-                onChange={this.handleChangePostcode}
-              />
+                >
+                  <ControlLabel>Adress:</ControlLabel>
+                  <FormControl
+                    type="text"
+                    value={this.state.co_address}
+                    placeholder="Enter adress"
+                    onChange={this.handleChangeAddress}
+                  />
+                  <br/>
+                  <ControlLabel>Postcode:</ControlLabel>
+                  <FormControl
+                    type="text"
+                    value={this.state.co_postcode}
+                    placeholder="Enter postcode"
+                    onChange={this.handleChangePostcode}
+                  />
 
-              <ControlLabel>City:</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.co_city}
-                placeholder="Enter postcode"
-                onChange={this.handleChangeCity}
-              />
+                  <ControlLabel>City:</ControlLabel>
+                  <FormControl
+                    type="text"
+                    value={this.state.co_city}
+                    placeholder="Enter postcode"
+                    onChange={this.handleChangeCity}
+                  />
 
-            </FormGroup>
-            <Button type="submit">Submit</Button>
-          </form>
-        )}
+                </FormGroup>
+                <Button type="submit">Submit</Button>
+              </form>)}
+          else{
+            return <Ads id={this.state.co_id} adPrice={40} />
+          }
+        }}
       </Mutation>
     );
   }

@@ -24,3 +24,16 @@ export const CREATE_BILLING = gql `
     }
   }
 `
+
+export const CREATE_ADS = gql `
+  mutation  createAds($input: CreateAdsInput!) {
+  createAds(input: $input) {
+    ad_id
+    ad_advertiserPrice
+    ad_productPrice
+    ad_content
+    ad_title
+    ad_advertiserID
+    }
+  }
+`

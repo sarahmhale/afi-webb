@@ -62,8 +62,8 @@ export default class Company extends Component {
             return(
               <form
                 onSubmit={e => {
-                  let input = this.state
-                  console.log(input)
+
+                  console.log(this.state)
                   e.preventDefault();
                   createCompany({
                     variables: {
