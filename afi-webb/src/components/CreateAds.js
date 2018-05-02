@@ -38,9 +38,7 @@ export default class CreateAds extends Component {
     return (
       <Mutation mutation={CREATE_ADS}
         update={(cache, { data: { createAds } }) => {
-
           const {getAds} = cache.readQuery({ query: GET_ADS });
-          console.log(createAds)
           cache.writeQuery({
             query: GET_ADS,
             data: { getAds: getAds.concat([createAds]) }
