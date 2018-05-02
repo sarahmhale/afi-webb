@@ -1,91 +1,47 @@
 import React, { Component } from 'react';
-import { FormControl, Button, ControlLabel, FormGroup } from 'react-bootstrap';
-import { Mutation } from "react-apollo";
-import { CREATE_ADS } from '../queries/Query'
+import { Table } from 'react-bootstrap';
 
+import { Query } from "react-apollo"
+import { GET_ADS } from '../queries/Query'
 
 export default class Ads extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleChangeContent = this.handleChangeContent.bind(this);
-    this.handleChangeProductPrice = this.handleChangeProductPrice.bind(this);
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-
-
-    this.state = {
-      ad_advertiserPrice: this.props.adPrice,
-      ad_productPrice: '',
-      ad_content: '',
-      ad_title: '',
-      ad_advertiserID: this.props.id
-    };
+  tableCell(data) {
+    console.log(data)
+    return (
+      <tr>
+        <td>{data.ad_title}</td>
+        <td>{data.ad_content}</td>
+        <td>{data.ad_productPrice}</td>
+        <td>{data.ad_advertiserPrice == 40?'FÖRETAG': 'PREMURANT'}</td>
+      </tr>
+    )
   }
-
-  handleChangeProductPrice(e) {
-    this.setState({ ad_productPrice: e.target.value });
-  }
-
-  handleChangeContent(e) {
-    this.setState({ ad_content: e.target.value });
-  }
-  handleChangeTitle(e) {
-    this.setState({ ad_title: e.target.value });
-  }
-
 
   render() {
     return (
-      <Mutation mutation={CREATE_ADS}>
-        {(createAds, { data,error }) => {
-
-          return(
-            <form
-              onSubmit={e => {
-                console.log(this.state)
-                e.preventDefault();
-                createAds({
-                  variables: {
-                      input: this.state
-                  }
-                });
-              }}>
-              <h1>Ad</h1>
-                <FormGroup
-                  controlId="formBasicText"
-
-                >
-                  <ControlLabel>Title:</ControlLabel>
-                  <FormControl
-                    type="text"
-                    value={this.state.ad_title}
-                    placeholder="Enter title"
-                    onChange={this.handleChangeTitle}
-                  />
-                  <br/>
-                  <ControlLabel>Content:</ControlLabel>
-                  <FormControl
-                    type="text"
-                    value={this.state.ad_content}
-                    placeholder="Enter content"
-                    onChange={this.handleChangeContent}
-                  />
-                  <br/>
-                  <ControlLabel>Productprice:</ControlLabel>
-                  <FormControl
-                    type="text"
-                    value={this.state.ad_productPrice}
-                    placeholder="Enter phonenumber"
-                    onChange={this.handleChangeProductPrice}
-                  />
-                  <br/>
-
-                </FormGroup>
-                <Button type="submit">Submit</Button>
-              </form>)
-
+      <Query
+        query={GET_ADS}
+      >
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error :(</p>;
+          return (
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Content</th>
+                  <th>Productprice</th>
+                  <th>Advertiser</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.Ads.map((data)=>this.tableCell(data))}
+              </tbody>
+            </Table>
+          );
         }}
-      </Mutation>
-    );
+      </Query>
+    )
   }
 }

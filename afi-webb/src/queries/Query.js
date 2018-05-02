@@ -37,3 +37,17 @@ export const CREATE_ADS = gql `
     }
   }
 `
+
+export const GET_ADS = gql `
+  {
+    Ads {
+      ad_id
+      ad_advertiserPrice
+      ad_productPrice
+      ad_content
+      ad_title
+      ad_advertiserID
+    }
+  }
+
+`

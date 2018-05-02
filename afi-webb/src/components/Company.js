@@ -49,21 +49,17 @@ export default class Company extends Component {
   handleChangeCity(e) {
     this.setState({ co_city: e.target.value });
   }
-  // utdelningsadress, postnummer samt ort
+
   render() {
     return (
       <Mutation mutation={CREATE_COMPANY}
         onCompleted={(data)=>{
-          console.log(data.createCompany.co_id)
-
         }}>
         {(createCompany, { data,error }) => {
           if(!data){
             return(
               <form
                 onSubmit={e => {
-
-                  console.log(this.state)
                   e.preventDefault();
                   createCompany({
                     variables: {

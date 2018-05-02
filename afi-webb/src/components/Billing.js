@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormControl, Button, ControlLabel, FormGroup } from 'react-bootstrap';
 import { Mutation } from "react-apollo";
 import { CREATE_BILLING } from '../queries/Query'
-import Ads from './Ads'
+import CreateAds from './CreateAds'
 
 export default class Billing extends Component {
   constructor(props, context) {
@@ -41,7 +41,6 @@ export default class Billing extends Component {
             return(
               <form
                 onSubmit={e => {
-                  console.log(this.state)
                   e.preventDefault();
                   createCompany({
                     variables: {
@@ -82,7 +81,7 @@ export default class Billing extends Component {
                 <Button type="submit">Submit</Button>
               </form>)}
           else{
-            return <Ads id={this.state.co_id} adPrice={40} />
+            return <CreateAds id={this.state.co_id} adPrice={40} />
           }
         }}
       </Mutation>
