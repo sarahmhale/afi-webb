@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {FormControl, Button, ControlLabel, HelpBlock} from 'react-bootstrap';
 import {Query} from "react-apollo";
 import {GET_SUBSCRIBER} from '../queries/subscriberQuery'
+import UserInfo from './UserInfo'
 
 export default class SubscriberPage extends React.Component {
     constructor(props, context) {
@@ -45,21 +46,7 @@ export default class SubscriberPage extends React.Component {
                     if (loading) return <p>Loading...</p>;
                     if (error) return <p>Error :(</p>;
                     console.log(data)
-                    return (
-                        <div>
-                            <p>Social Number :{data.subscribersByID.su_socialnumber}</p>
-
-                            <p>First Name: {data.subscribersByID.su_firstname}</p>
-
-                            <p>Last Name:{data.subscribersByID.su_lastname}</p>
-
-                            <p>Address:{data.subscribersByID.su_address}</p>
-
-                            <p>Postcode: {data.subscribersByID.su_postcode}</p>
-
-                            <p>City: {data.subscribersByID.su_city}</p>
-
-                        </div>)
+                    return (<UserInfo su={data.subscribersByID}/>)
                     }
                 }
                 </Query>

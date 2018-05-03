@@ -51,3 +51,18 @@ export const GET_ADS = gql `
   }
 
 `
+export const UPDATE_SUBSCRIBER  = gql `
+mutation updateSubscriber($input: UpdateSubscriberInput!) {
+  updateSubscriber(input: $input) {
+      su_id
+      su_socialnumber
+      su_firstname
+      su_lastname
+      su_address
+      su_postcode
+      su_city
+      su_subscribtion_number
+
+    }
+  }
+`

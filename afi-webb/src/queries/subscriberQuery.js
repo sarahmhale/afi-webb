@@ -30,3 +30,21 @@ query subscribersByID($id: String!) {
     }
   }
 `
+
+
+
+export const UpdateSubscriberInput  = gql `
+query subscribersByID($id: String!) {
+  subscribersByID(id: $id) {
+      su_id
+      su_socialnumber
+      su_firstname
+      su_lastname
+      su_address
+      su_postcode
+      su_city
+      su_subscribtion_number
+
+    }
+  }
+`
