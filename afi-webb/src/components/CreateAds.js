@@ -3,7 +3,6 @@ import { FormControl, Button, ControlLabel, FormGroup } from 'react-bootstrap';
 import { Mutation } from "react-apollo";
 import { CREATE_ADS ,GET_ADS} from '../queries/Query'
 
-
 export default class CreateAds extends Component {
   constructor(props, context) {
     super(props, context);
@@ -58,37 +57,37 @@ export default class CreateAds extends Component {
                 });
               }}>
               <h1>Ad</h1>
-                <FormGroup
-                  controlId="formBasicText"
+              <FormGroup
+                controlId="formBasicText"
 
-                >
-                  <ControlLabel>Title:</ControlLabel>
-                  <FormControl
-                    type="text"
-                    value={this.state.ad_title}
-                    placeholder="Enter title"
-                    onChange={this.handleChangeTitle}
-                  />
-                  <br/>
-                  <ControlLabel>Content:</ControlLabel>
-                  <FormControl
-                    type="text"
-                    value={this.state.ad_content}
-                    placeholder="Enter content"
-                    onChange={this.handleChangeContent}
-                  />
-                  <br/>
-                  <ControlLabel>Productprice:</ControlLabel>
-                  <FormControl
-                    type="text"
-                    value={this.state.ad_productPrice}
-                    placeholder="Enter phonenumber"
-                    onChange={this.handleChangeProductPrice}
-                  />
-                  <br/>
+              >
+                <ControlLabel>Title:</ControlLabel>
+                <FormControl
+                  type="text"
+                  value={this.state.ad_title}
+                  placeholder="Enter title"
+                  onChange={this.handleChangeTitle}
+                />
+                <br/>
+                <ControlLabel>Content:</ControlLabel>
+                <FormControl
+                  type="text"
+                  value={this.state.ad_content}
+                  placeholder="Enter content"
+                  onChange={this.handleChangeContent}
+                />
+                <br/>
+                <ControlLabel>Productprice:</ControlLabel>
+                <FormControl
+                  type="text"
+                  value={this.state.ad_productPrice}
+                  placeholder="Enter phonenumber"
+                  onChange={this.handleChangeProductPrice}
+                />
+                <br/>
 
-                </FormGroup>
-                <Button type="submit">Submit</Button>
+              </FormGroup>
+              <Button type="submit">Submit</Button>
               </form>)
 
         }}

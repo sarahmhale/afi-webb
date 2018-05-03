@@ -39,8 +39,8 @@ export default class SubscriberPage extends Component {
         else{
             return(
                 <Query
-                    query={GET_SUBSCRIBER}
-                    variables={{ id: this.state.su_id}}
+                  query={GET_SUBSCRIBER}
+                  variables={{ id: this.state.su_id}}
                 >
                 {({loading, error,data}) => {
                     if (loading) return <p>Loading...</p>;

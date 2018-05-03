@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {FormControl, Button, ControlLabel, FormGroup} from 'react-bootstrap';
 import {Mutation} from "react-apollo";
 import {UPDATE_SUBSCRIBER,GET_SUBSCRIBER} from '../queries/Query'
+import CreateAds from './CreateAds'
 
 export default class UserInfo extends React.Component {
     constructor(props, context) {
@@ -60,11 +61,8 @@ export default class UserInfo extends React.Component {
     render() {
         return (<Mutation mutation={UPDATE_SUBSCRIBER}
           update={(cache, { data: { updateSubscriber } }) => {
-            console.log(cache)
+
             const {subscribersByID} = cache.readQuery({ query: GET_SUBSCRIBER, variables:{id: this.state.su_id} });
-            console.log(cache);
-            console.log(subscribersByID);
-            console.log(updateSubscriber)
 
             cache.writeQuery({
               query: GET_SUBSCRIBER,
@@ -75,21 +73,23 @@ export default class UserInfo extends React.Component {
           {(updateSubscriber, {data, error}) => {
             if (this.state.showForm) {
               return (<div>
-                <p>Social Number :{this.props.su.su_socialnumber}</p>
+                <p>Social Number :{this.state.su_socialnumber}</p>
 
-                <p>First Name: {this.props.su.su_firstname}</p>
+                <p>First Name: {this.state.su_firstname}</p>
 
-                <p>Last Name:{this.props.su.su_lastname}</p>
+                <p>Last Name:{this.state.su_lastname}</p>
 
-                <p>Address:{this.props.su.su_address}</p>
+                <p>Address:{this.state.su_address}</p>
 
-                <p>Postcode: {this.props.su.su_postcode}</p>
+                <p>Postcode: {this.state.su_postcode}</p>
 
-                <p>City: {this.props.su.su_city}</p>
+                <p>City: {this.state.su_city}</p>
 
                 <Button onClick={()=>{
                   this.showSubscriberInfo(false)
                 }}>Change</Button>
+
+                <CreateAds id={this.state.su_id} adPrice={0} />
 
               </div>)
             } else {
