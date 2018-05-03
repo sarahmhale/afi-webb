@@ -12,7 +12,7 @@ export default class Ads extends Component {
         <td>{data.ad_title}</td>
         <td>{data.ad_content}</td>
         <td>{data.ad_productPrice}</td>
-        <td>{data.ad_advertiserPrice == 40?'FÖRETAG': 'PREMURANT'}</td>
+        <td>{data.ad_advertiserPrice === 40?'FÖRETAG': 'PREMURANT'}</td>
       </tr>
     )
   }

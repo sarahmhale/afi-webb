@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
-import {FormControl, Button, ControlLabel, HelpBlock} from 'react-bootstrap';
+import {FormControl, Button, ControlLabel} from 'react-bootstrap';
 import {Query} from "react-apollo";
 import {GET_SUBSCRIBER} from '../queries/subscriberQuery'
 import UserInfo from './UserInfo'
 
-export default class SubscriberPage extends React.Component {
+export default class SubscriberPage extends Component {
     constructor(props, context) {
         super(props, context);
         this.handleChangeID = this.handleChangeID.bind(this);

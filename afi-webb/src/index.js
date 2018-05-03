@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Subscriber from './components/Subscriber'
-import Company from './components/Company'
+import Ads from './components/Ads'
 import StartPage from './components/StartPage'
 import {Header} from './components/Header'
 import registerServiceWorker from './registerServiceWorker';
@@ -23,8 +23,8 @@ ReactDOM.render(
         <div>
           <Header/>
           <Route exact path={"/"} component={Subscriber}/>
-          <Route path={"/company"} component={Company}/>
-          <Route path={"/ads"} component={StartPage}/>
+          <Route path={"/ads"} component={Ads}/>
+          <Route path={"/createAd"} component={StartPage}/>
         </div>
       </BrowserRouter>
     </ApolloProvider>, document.getElementById('root'));
