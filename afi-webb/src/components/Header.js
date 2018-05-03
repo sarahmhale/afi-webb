@@ -10,8 +10,8 @@ export const Header = (props)=>{
         <h1>The newspaper</h1>
       </div>
       <ul className="nav navbar-nav">
-        <li><Link to="/">Subscribers</Link></li>
-        <li><Link to="/company">Company</Link></li>
+        {/* <li><Link to="/">Subscribers</Link></li> */}
+        <li><Link to="/createAd">Create Ad</Link></li>
         <li><Link to="/ads">Ads</Link></li>
       </ul>
     </div>
